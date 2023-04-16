@@ -20,11 +20,10 @@ namespace ExamPreparationEF.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        public List<Children> childrens;
+        
         public MainPage()
         {
             InitializeComponent();
-            ExapPreparationEfContext db = new ExapPreparationEfContext();
             childrens = db.Childrens.ToList();
             AllChildrens.ItemsSource = childrens;
         }
@@ -33,6 +32,20 @@ namespace ExamPreparationEF.Pages
         {
             string path = Modules.OpenDialog();
             Modules.WriteChildrens(childrens, path);
+        }
+
+        private void AllChildrens_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var track = ((DataGrid)sender).SelectedItem as Children;
+            if (track != null)
+            {
+                Manager.frame.Navigate(new EditPage(track));
+            }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.frame.Navigate(new AddPage());
         }
     }
 }

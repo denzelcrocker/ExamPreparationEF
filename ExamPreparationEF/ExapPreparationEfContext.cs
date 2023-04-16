@@ -25,11 +25,8 @@ public partial class ExapPreparationEfContext : DbContext
     {
         modelBuilder.Entity<Children>(entity =>
         {
-            entity.HasNoKey();
-
             entity.Property(e => e.Birthday).HasMaxLength(50);
             entity.Property(e => e.Gender).HasMaxLength(50);
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
             entity.Property(e => e.Name).HasMaxLength(50);
         });
 
