@@ -33,18 +33,6 @@ namespace ExamPreparationEF.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < childrens.Count; i++)
-            {
-                if (childrens[i].Id == thisChildren.Id)
-                {
-                    childrens[i].Name = Name.Text;
-                    childrens[i].Birthday = Birthday.Text;
-                    childrens[i].Gender = Gender.Text;
-                    db.SaveChanges();
-                    Manager.frame.Navigate(new MainPage());
-
-                }
-            }
             foreach (Children item in CurrentList.childrens)
             {
                 if (item.Id == thisChildren.Id)
